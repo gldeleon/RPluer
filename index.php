@@ -118,13 +118,20 @@ if(isset($_POST['formulariofolio'])){
         }else{
             $foliojy = 0;
         }
+        
+        if(isset($_POST['caratula'])){
+            $caratula = $_POST['caratula'];
+        }else{
+            $caratula = 0;
+        }
+        
         $fotos = $_FILES['archivo'];
         
         
         //var_dump($_FILES['archivo']);
         //var_dump($fotos);
         
-	$controller->CreaFolio($nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy);
+	$controller->CreaFolio($nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy, $caratula);
 	
 }elseif(isset($_POST['sesion'])){
 	$controller->LoginA($_POST['user'], $_POST['contra']);

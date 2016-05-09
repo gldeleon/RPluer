@@ -49,7 +49,9 @@
                                         <label>FECHA RECIBIDO</label>
                                         <p class="help-block"><?php echo date('d-m-Y', strtotime($data->ENTRADA_CAJA));?></p><br />
                                         <label>DESCRIPCION RELOJ</label>
-                                        <p class="help-block"><?php echo $data->DESCR_RELOJ;?></p>
+                                        <p class="help-block"><?php echo $data->DESCR_RELOJ;?></p><br />
+                                        <label>CARATULA</label>
+                                        <p class="help-block"><?php echo $data->CARATULA;?></p>
                 		</div>
                 	</div>
                 </div>

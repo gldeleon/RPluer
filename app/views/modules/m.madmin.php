@@ -89,6 +89,8 @@
                 			<br />
                 			<input class="form-control" type="text" name="matpulso" placeholder="MATERIAL DE PULSO" required="required" />
                 			<br />
+                                        <input class="form-control" type="text" name="caratula" placeholder="CARATULA" required="required" />
+                			<br />
                 			<textarea placeholder="CONDICIONES EN QUE SE RECIBE EL RELOJ" class="form-control" name="condiciones" required="required" ></textarea>
                 			<br />
                 		</div>
@@ -98,7 +100,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <label class="btn btn-primary btn-file" for="multiple_input_group">
-                  <div class="input required"><input id="multiple_input_group" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
+                  <div class="input required"><input id="multiple_input_group" name="archivo[]" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
                 </label>
               </span>
               <span class="file-input-label"></span>
@@ -106,7 +108,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <label class="btn btn-primary btn-file" for="multiple_input_group">
-                  <div class="input required"><input id="multiple_input_group" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
+                  <div class="input required"><input id="multiple_input_group" name="archivo[]" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
                 </label>
               </span>
               <span class="file-input-label"></span>
@@ -114,7 +116,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <label class="btn btn-primary btn-file" for="multiple_input_group">
-                  <div class="input required"><input id="multiple_input_group" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
+                  <div class="input required"><input id="multiple_input_group" name="archivo[]" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
                 </label>
               </span>
               <span class="file-input-label"></span>
@@ -122,7 +124,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <label class="btn btn-primary btn-file" for="multiple_input_group">
-                  <div class="input required"><input id="multiple_input_group" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
+                  <div class="input required"><input id="multiple_input_group" name="archivo[]" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
                 </label>
               </span>
               <span class="file-input-label"></span>
@@ -130,7 +132,7 @@
             <div class="input-group">
               <span class="input-group-btn">
                 <label class="btn btn-primary btn-file" for="multiple_input_group">
-                  <div class="input required"><input id="multiple_input_group" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
+                  <div class="input required"><input id="multiple_input_group" name="archivo[]" type="file" multiple></div> <i class="fa fa-camera" aria-hidden="true"></i>
                 </label>
               </span>
               <span class="file-input-label"></span>

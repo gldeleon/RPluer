@@ -372,7 +372,7 @@ class rpluer_controller{
 			}
 	}
 	
-	function CreaFolio($nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy){
+	function CreaFolio($nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy, $caratula){
 		session_cache_limiter('private_no_expire');
 		if(isset($_SESSION['user'])){
 			$data = new rpluer;
@@ -396,7 +396,7 @@ class rpluer_controller{
 		//generamos consulta
 		$user = $_SESSION['user'];
                 //var_dump($fotos);
-		$exec = $data->InsertDataOdts($user, $nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy);
+		$exec = $data->AsignaRelojero($user, $nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $foliojy, $caratula);
 		if($exec > 0){
 			//header ('Location: http://localhost/rpluer/index.php?action=odt');
 			include 'app/views/sections/s.'.$sheader.'.php';
@@ -727,14 +727,17 @@ class rpluer_controller{
 			$pdf->Cell(75,5,"No. Caja: " . strtoupper($datosreloj->NO_CAJA));
                         $pdf->Cell(75,5,"Material Pulso: " . strtoupper($datosreloj->MAT_PULSO));
                         $pdf->Ln(6);
-                        $pdf->Cell(75,5,"Descripcion: " . strtoupper($datosreloj->DESCR_RELOJ));
+                        //$pdf->Cell(75,5,"Descripcion: " . strtoupper($datosreloj->DESCR_RELOJ));
                         $pdf->Cell(75,5,"Tipo de Maq: " . strtoupper($datosreloj->TIPO_MAQUINA));
+                        //$pdf->Cell(75,10,"Caratula: " . strtoupper($datosreloj->CARATULA));
+                        $pdf->Ln(6);
+                        $pdf->Cell(75,5,"Descripcion: " . strtoupper($datosreloj->DESCR_RELOJ));
 			$pdf->Ln(6);
 			$pdf->Cell(75,5,"Trabajos: " . strtoupper(trim($reloj->TRABAJOS)));	                        
-			$pdf->Ln(8);
+			$pdf->Ln(6);
                         //$pdf->Cell(20,10,'Title',1,1,'C');
 			$pdf->Cell(41,5,strtoupper("-------------------------------------------IMPORTANTE-------------------------------------------------"));
-			$pdf->Ln(9);
+			$pdf->Ln(8);
 			$pdf->Cell(41,5,strtoupper("AL ACEPTAR ESTE RECIBO EL CLIENTE ESTA DE ACUERDO CON TODOS LOS"));
 			$pdf->Ln(4);
 			$pdf->Cell(42,5,strtoupper("DATOS Y CONDICIONES EN EL EXPRESADOS, EL RELOJ SERA ENTREGADO"));
@@ -832,6 +835,7 @@ class rpluer_controller{
 			$pdf->Cell(75,10,"Email: " . strtoupper($mail));
 			$pdf->Ln(8);
 			$pdf->Cell(75,10,"Tipo Maquina: " . strtoupper($datosreloj->TIPO_MAQUINA));			
+                        //$pdf->Cell(75,10,"Caratula: " . strtoupper($datosreloj->CARATULA));
 			$pdf->Ln(8);
 			$pdf->Cell(75,10,"Marca: " . strtoupper($datosreloj->MARCA));
 			$pdf->Cell(75,10,"Modelo: " . strtoupper($datosreloj->MODELO));

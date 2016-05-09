@@ -88,6 +88,8 @@
                 			<br />
                 			<input class="form-control" type="text" name="matpulso" placeholder="MATERIAL DE PULSO" required="required" />
                 			<br />
+                                        <input class="form-control" type="text" name="caratula" placeholder="CARATULA" required="required" />
+                			<br />
                 			<textarea placeholder="CONDICIONES EN QUE SE RECIBE EL RELOJ" class="form-control" name="condiciones" required="required" ></textarea>
                 			<br />
                 		</div>

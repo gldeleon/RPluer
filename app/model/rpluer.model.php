@@ -65,14 +65,14 @@ class rpluer extends database{
 	}
 	
 	/*funcion pàra insertar nuevas odt*/
-	function InsertDataOdts($user, $nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $folioJy){
+	function InsertDataOdts($user, $nombre, $marca, $mod, $nocaja, $calibre, $matcaja, $fecha, $ref, $maquina, $matpulso, $trabajos, $desc_reloj, $tipomaq, $detalleCaja, $condiciones, $garantia, $fotos, $tipo, $folioJy, $caratula){
 		$rs = $this->ObtieneRegSC();
 		$id = (int) $rs->ID + 1;
 		//echo $id;
 		/*$clave = (int) $rs->COUNT + 1;*/
 		$t = $this->ObtieneTarjeta();
 		$tarjeta = (int) $t->TARJETA + 1;
-		$r = $this->GuardaReloj($tarjeta, $marca, $mod, $nocaja, $calibre, $matcaja, $maquina, $matpulso, $desc_reloj, $tipomaq, $detalleCaja);
+		$r = $this->GuardaReloj($tarjeta, $marca, $mod, $nocaja, $calibre, $matcaja, $maquina, $matpulso, $desc_reloj, $tipomaq, $detalleCaja, $caratula);
 		if($r >0){
 			$cve_reloj = $this->ObtieneCveReloj();
 			$reloj = $cve_reloj->CVE_RELOJ;
@@ -87,9 +87,9 @@ class rpluer extends database{
 		//var_dump($user);
 		$user1 = $user->USER_LOGIN;
 		$this->query = "INSERT INTO odt (ID, CLAVE, TARJETA, CVE_CTE, CVE_RELOJ, REFERENCIA, CVE_SERVICIO, COSTOS, MN, 
-						RECIBO_PLUER, CONDICION_RELOJ, AUTORIZADO, ENTRADA_CAJA, RECIBE_RELOJERO, ENTREGA_RELOJERO, ENTREGA_CLIENTE, CVE_RELOJERO, ESTATUS, TRABAJOS, FECHACREACION_ODT, ULTIMO_CAMBIO, GARANTIA, TIPO, FOLIOJY, RUTA_FOTOS)
+						RECIBO_PLUER, CONDICION_RELOJ, AUTORIZADO, ENTRADA_CAJA, RECIBE_RELOJERO, ENTREGA_RELOJERO, ENTREGA_CLIENTE, CVE_RELOJERO, ESTATUS, TRABAJOS, FECHACREACION_ODT, ULTIMO_CAMBIO, GARANTIA, TIPO, FOLIOJY, RUTA_FOTOS, CARATULA)
 						VALUES ($id,'$tarjeta','$tarjeta','$cliente','$reloj','$ref','', '',0,'', '$condiciones', 'espera', '$fecha', '01.01.0101', '01.01.0101', '01.01.0101', '0','proceso', '".trim($trabajos)."', '$fecha', 
-						'$user1', '$garantia', '$tipo', '$folioJy', '$ruta')";
+						'$user1', '$garantia', '$tipo', '$folioJy', '$ruta', '$caratula')";
 		$result = $this->EjecutaQuerySimple();
 		//var_dump($result);
 		return $result;
@@ -225,7 +225,7 @@ class rpluer extends database{
 		$this->query = "SELECT a.ID, a.CLAVE, a.TARJETA, b.NOMBRE, c.MARCA, a.REFERENCIA, a.CVE_SERVICIO, a.COSTOS, a.MN, a.RECIBO_PLUER, a.CONDICION_RELOJ, a.AUTORIZADO, a.ENTRADA_CAJA, 
                                 a.RECIBE_RELOJERO, a.ENTREGA_RELOJERO, a.ENTREGA_CLIENTE, a.CVE_RELOJERO, a.ESTATUS, a.TRABAJOS, a.FECHACREACION_ODT, a.ULTIMO_CAMBIO, c.MAQUINA, a.REFERENCIA, c.CALIBRE,
                                 d.NOMBRE as NOMBRE_RELOJERO, c.MODELO, c.NO_CAJA, c.MAT_CAJA, c.MAT_PULSO, c.TIPO_MAQUINA, c.DETALLE_CAJA, a.TRABAJOS, a.RUTA_FOTOS, a.FOLIOJY,
-                                b.EMAIL, c.DESCR_RELOJ, a.GARANTIA, a.DIAGNOSTICO
+                                b.EMAIL, c.DESCR_RELOJ, a.GARANTIA, a.DIAGNOSTICO, a.CARATULA
                                 FROM ODT a 
                                 LEFT JOIN CLIENTES b
                                 ON a.CVE_CTE = b.CLAVE

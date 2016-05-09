@@ -19,6 +19,7 @@
     <link href="app/views/bower_components/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="app/views/dist/css/rpluer.css" rel="stylesheet">
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">-->
     <!--<link href="app/views/dist/css/datosprov.css" rel="stylesheet">-->
     <!-- Custom Fonts -->
     <!--<link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
@@ -62,7 +63,9 @@
     <script src="app/views/bower_components/metisMenu/dist/metisMenu.min.js"></script>
     <!-- DataTables JavaScript -->
     <script src="app/views/bower_components/DataTables/media/js/jquery.dataTables.js"></script>      
-    <script src="app/views/bower_components/DataTables/media/js/dataTables.bootstrap.js"></script>    
+    <script src="app/views/bower_components/DataTables/media/js/dataTables.bootstrap.js"></script>  
+    <!--FileStyle-->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="app/views/dist/js/rpluer.js"></script>   
 	<!--jQuery UI JS-->
@@ -152,15 +155,13 @@
 		
     });
     </script>     
-    <script type="text/javascript">
-            $('#time').timepicker();
-            
+        <script>
             $(document).on('change', '.btn-file :file', function() {
-  var input = $(this),
-      numFiles = input.get(0).files ? input.get(0).files.length : 1,
-      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-  input.trigger('fileselect', [numFiles, label]);
-});
+                var input = $(this),
+                    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [numFiles, label]);
+              });
 
 
 	$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
@@ -174,6 +175,9 @@
 			if( log ) alert(log);
 		}
 	});
+        </script>
+    <script type="text/javascript">
+            $('#time').timepicker();
         </script>
 		<!--<script>
 			  
